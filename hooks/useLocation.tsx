@@ -6,24 +6,27 @@ interface ProviderProps {
 }
 
 type LocationContextType = {
-  location: Object;
-  initialLocation: Object;
+  location: Location.LocationObject;
+  initialLocation: Location.LocationObject;
   updateLocation: (loc: Location.LocationObject) => void;
   refetchLocation: () => void;
   setInitialLocation: (loc: Location.LocationObject) => void;
 };
 
 export const LocationContext = createContext<LocationContextType>({
-  location: {},
-  initialLocation: {},
+  location: {} as Location.LocationObject,
+  initialLocation: {} as Location.LocationObject,
   updateLocation: () => null,
   refetchLocation: () => null,
   setInitialLocation: () => null,
 });
 
 export const LocationProvider = (props: ProviderProps) => {
-  const [location, setLocation] = useState<Object>({});
-  const [initialLocation, setInitialLocationContext] = useState<Object>({});
+  const [location, setLocation] = useState<Location.LocationObject>(
+    {} as Location.LocationObject
+  );
+  const [initialLocation, setInitialLocationContext] =
+    useState<Location.LocationObject>({} as Location.LocationObject);
 
   const updateLocation = useCallback(
     (loc: Location.LocationObject) => {
@@ -58,3 +61,5 @@ export const LocationProvider = (props: ProviderProps) => {
     </LocationContext.Provider>
   );
 };
+
+export default () => useContext(LocationContext);

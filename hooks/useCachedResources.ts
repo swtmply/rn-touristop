@@ -1,13 +1,13 @@
 import { FontAwesome } from "@expo/vector-icons";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import * as Location from "expo-location";
-import { LocationContext } from "./useLocation";
+import useLocation from "./useLocation";
 
 export default function useCachedResources() {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
-  const { updateLocation } = useContext(LocationContext);
+  const { updateLocation } = useLocation();
   // Load any resources or data that we need prior to rendering the app
   useEffect(() => {
     async function loadResourcesAndDataAsync() {
