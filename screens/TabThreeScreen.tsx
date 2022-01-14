@@ -1,11 +1,14 @@
 import { StyleSheet } from "react-native";
 
 import { Text, View } from "../components/Themed";
+import { RootTabScreenProps } from "../types";
 
-export default function TabTwoScreen() {
+export default function TabThreeScreen({
+  navigation,
+}: RootTabScreenProps<"TabThree">) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Places</Text>
+      <Text style={styles.title}>Schedule</Text>
     </View>
   );
 }
